@@ -1,0 +1,74 @@
+
+{% load static %}
+<header>
+
+	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+		<div class="container-fluid justify-content-center">
+
+			<a class="navbar-brand" href="#">
+				<img src="{% static 'Core/img/brawl.png' %}" alt="Bootstrap"
+					width="30" height="24">
+			</a>
+
+			<a class="navbar-brand" href>TUFer</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse d-flex flex-row flex-grow-0" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 align-items-center">
+					<li class="nav-item">
+						<a class="nav-link  py-1 active" aria-current="page"
+							href="{% url 'catalog' %}">Catalog</a>
+					</li>
+					{% if not request.user.is_authenticated %}
+					<li class="nav-item">
+						<a class="nav-link active btn rounded-2 btn-white btn-outline-black border border-2 py-1" aria-current="page"
+							href="{% url 'signin' %}">Sign in</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link active btn rounded-2 btn-white btn-outline-black border border-2 py-1" aria-current="page"
+							href="{% url 'signup' %}">Registration</a>
+					</li>
+					{% endif %}
+				
+					
+					{% if  request.user.is_authenticated %}
+					{% if request.user.avatar %}
+					<li class="nav-item">
+						<a class="nav-link py-1" href="{% url 'orders' %}">Orders</a>
+					</li>
+					<li class="nav-item ">
+						<a href="{% url 'signout' %}">
+							<img src="{% static 'Core/img/exit.png' %}" alt="Bootstrap"
+							width="23" height="23">
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="{% url 'profile' %}">
+							<img class="rounded-4" src="{{request.user.avatar.url}}" alt="Bootstrap"
+							width="30" height="30">
+						</a>
+					</li>
+					{% else %}
+					<li class="nav-item">
+						<a href="{% url 'profile' %}">
+							<img src="{% static 'Core/img/friend.png' %}" alt="Bootstrap"
+							width="28" height="28">
+						</a>
+					</li>
+					{% endif %}
+					{% endif %}
+					<li>
+						<img class="btnChangeTheme" src="{% static 'Core/img/moon.png' %}" alt=""
+						width="28" height="28">
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+</header>

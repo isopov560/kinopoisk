@@ -1,0 +1,23 @@
+{% extends 'Core/base.html' %}
+{% load static %}
+{% block title %}sign up{% endblock %}
+{% block content %}
+<h2 class="text-center">Sign Up</h2>
+<div class="justify-content-center flex-wrap d-flex gap-5">
+
+	<form class="d-flex flex-column gap-2 mx-auto" style="max-width: 320px;"
+		method="post" >{% csrf_token %}
+		<input class="form-control text-black border-2 border-opacity-0" type="text"
+			name="username" placeholder="name">
+		<input class="form-control text-black border-2 border-opacity-0" type="text"
+			name="email" placeholder="email">
+		<input class="form-control text-black border-2 border-opacity-0" type="text"
+			name="password" placeholder="password">
+		<input class="form-control text-black border-2 border-opacity-0" type="text"
+			name="repeat_password" placeholder="repeat password">
+			<span class="text-danger fw-bold">{{ error }}</span>
+		
+		<button class="btn btn-success form-control" type="submit">Подтвердить</button>
+	</form>
+	
+	{% endblock %}

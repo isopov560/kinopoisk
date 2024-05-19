@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="{% static 'Core/css/bootstrap.min.css' %}">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{% block title %}{% endblock %}</title>
+		<script defer src="{% static 'Core/js/bootstrap.min.js' %}"></script>
+		<script defer src="{% static 'Core/js/change_theme.js' %}"></script>
+		<script defer src="{% static 'Core/css/base.css' %}"></script>
+		<script defer src="{% static 'Core/css/wide-classes.css' %}"></script>
+	</head>
+	<body data-bs-theme="dark">
+		{% include 'Core/includes/header.html' %}
+		<main>
+			{% block content %}{% endblock %}
+		</main>
+		{% include 'Core/includes/footer.html' %}
+	</body>
+
+</html>
